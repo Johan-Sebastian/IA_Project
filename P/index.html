@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>La pagina, nose como se llame</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>una pagina</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Página principal</a></li>
+                <li><a href="1.html">Enciclopedias de enfermedades</a></li>
+                <li><a href="2.html">Usuario</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content-container">
+        <h2>Lista</h2>
+        <div class="recommended-gallery" id="Enfermedad-gallery">
+            <button id="prev-button"><</button>
+            <div class="recommended Enfermedad-card">
+                    <a href="tail.html">
+                    <img src="static/images/1.jpg" alt="Recomendación 1">
+                    <div class="recommended-info">
+                        <h3>1</h3>
+                    </div>
+                    </a>
+            </div>
+            <div class="recommended Enfermedad-card">
+                <img src="static/images/2.jpg" alt="Recomendación 2">
+                <div class="recommended-info">
+                    <h3>2</h3>
+                </div>
+            </div>
+            <div class="recommended Enfermedad-card">
+                <img src="static/images/3.jpg" alt="Recomendación 3">
+                <div class="recommended-info">
+                    <h3>3</h3>
+                </div>
+            </div>
+            
+
+            <div class="recommended Enfermedad-card">
+                <img src="static/images/3.jpg" alt="Recomendación 4">
+                <div class="recommended-info">
+                    <h3>4</h3>
+                </div>
+            </div>
+            <div class="recommended Enfermedad-card">
+                <img src="static/images/3.jpg" alt="Recomendación 5">
+                <div class="recommended-info">
+                    <h3>5</h3>
+                </div>
+            </div>
+            <div class="recommended Enfermedad-card">
+                <img src="static/images/3.jpg" alt="Recomendación 6">
+                <div class="recommended-info">
+                    <h3>6</h3>
+                </div>
+            </div>
+            <button id="next-button">></button>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 MisEnfermedades</p>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const EnfermedadGallery = document.getElementById("Enfermedad-gallery");
+            const EnfermedadCards = EnfermedadGallery.querySelectorAll(".Enfermedad-card");
+            const prevButton = document.getElementById("prev-button");
+            const nextButton = document.getElementById("next-button");
+
+            const numEnfermedads = EnfermedadCards.length;
+            let startIndex = 0;
+
+            function showEnfermedads(startIndex) {
+                EnfermedadCards.forEach((card, index) => {
+                    if (index >= startIndex && index < startIndex + 3) {
+                        card.style.display = "block";
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+            }
+
+            showEnfermedads(startIndex);
+
+            prevButton.addEventListener("click", () => {
+                if (startIndex > 0) {
+                    startIndex -= 3;
+                    showEnfermedads(startIndex);
+                }
+            });
+
+            nextButton.addEventListener("click", () => {
+                if (startIndex + 3 < numEnfermedads) {
+                    startIndex += 3;
+                    showEnfermedads(startIndex);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
